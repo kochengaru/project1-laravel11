@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
+
 class AuthController extends Controller
 {
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email:dns',
+            'email' => 'required|email',
             'password' => 'required|min:8|max:15',
         ]);
 
@@ -34,7 +35,7 @@ class AuthController extends Controller
         }
     }
 
-    public function adminLogout()
+    public function admin_logout()
     {
         Auth::guard("admin")->logout();
         toast('Berhasil logout!', 'success');

@@ -2,90 +2,71 @@
 <html lang="zxx" class="no-js">
 
 <head>
-    <!-- Mobile Specific Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/templates/user/img/fav.png') }}">
-    <!-- Author Meta -->
-    <meta name="author" content="CodePixar">
-    <!-- Meta Description -->
-    <meta name="description" content="">
-    <!-- Meta Keyword -->
-    <meta name="keywords" content="">
-    <!-- Meta Charset -->
+    <!-- Meta tags -->
     <meta charset="UTF-8">
-    <!-- Site Title -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="CodePixar">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Title -->
     <title>Merch Store</title>
 
-    <!-- CSS ============================================= -->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/templates/user/img/fav.png') }}">
+
+    <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/templates/user/css/linearicons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/templates/user/css/owl.carousel.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/templates/user/css/themifyicons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/templates/user/css/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/templates/user/css/niceselect.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/templates/user/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/templates/user/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/templates/user/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/templates/user/css/nouislider.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/templates/user/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/templates/user/css/main.css') }}">
 </head>
 
 <body>
+    @include('sweetalert::alert')
 
-    <!--================ Login Box Area =================-->
+    <!-- Login Box Area -->
     <section class="login_box_area section_gap">
         <div class="container">
-            <h3 class="text-center mb-5">Selamat Datang di Halaman Utama</h3>
             <div class="row">
                 <div class="col-lg-6">
-                    <h5>Data Admin</h5>
-                    <table>
-                        <tr>
-                            <th>Nama</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                        </tr>
-                        @forelse ($admins as $item)
-                            <tr>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->username }}</td>
-                                <td>{{ $item->email }}</td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="3" class="text-center">Data Kosong</td>
-                            </tr>
-                        @endforelse
-                    </table>
+                    <div class="login_box_img">
+                        <img class="img-fluid" src="{{ asset('assets/templates/user/img/login.jpg') }}" alt="">
+                        <div class="hover">
+                            <h4>New to our website?</h4>
+                            <p>There are advances being made in science and technology everyday, and a good example of this is the</p>
+                            <a class="primary-btn" href="registration.html">Create an Account</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-6">
-                    <h5>Data User</h5>
-                    <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Points</th>
-                        </tr>
-                        @forelse ($users as $item)
-                            <tr>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->email }}</td>
-                                <td>{{ $item->point }}</td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="3" class="text-center">Data Kosong</td>
-                            </tr>
-                        @endforelse
-                    </table>
+                    <div class="login_form_inner">
+                        <h3>Log in to enter</h3>
+                        <form class="row login_form" action="/post-login" method="POST" id="contactForm" novalidate="novalidate">
+                            @csrf
+                            <div class="col-md-12 form-group">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <button type="submit" value="submit" class="primary-btn">Log In</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--================ End Login Box Area =================-->
 
-    <!-- Scripts -->
+    <!-- JavaScript Files -->
     <script src="{{ asset('assets/templates/user/js/vendor/jquery-2.2.4.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/templates/user/js/vendor/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/templates/user/js/jquery.ajaxchimp.min.js') }}"></script>
     <script src="{{ asset('assets/templates/user/js/jquery.nice-select.min.js') }}"></script>
@@ -93,9 +74,8 @@
     <script src="{{ asset('assets/templates/user/js/nouislider.min.js') }}"></script>
     <script src="{{ asset('assets/templates/user/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('assets/templates/user/js/owl.carousel.min.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
     <script src="{{ asset('assets/templates/user/js/gmaps.min.js') }}"></script>
     <script src="{{ asset('assets/templates/user/js/main.js') }}"></script>
 </body>
-
 </html>
