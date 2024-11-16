@@ -27,5 +27,5 @@ Route::group(['middleware' => 'web'], function() {
     Route::get('/user', function() {
         return view('pages.user.index');
     })->name('user.dashboard');
-    Route::get('/user-logout', [AuthController::class, 'user_logout'])->name('user.Logout');
+    Route::get('/user-logout', [AuthController::class, 'user_logout'])->name('user.logout');
 });

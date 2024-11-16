@@ -42,7 +42,7 @@ class AuthController extends Controller
         return redirect("/");
     }
 
-    public function userLogout()
+    public function user_logout()
     {
         Auth::logout();
         toast('Berhasil logout!', 'success');
