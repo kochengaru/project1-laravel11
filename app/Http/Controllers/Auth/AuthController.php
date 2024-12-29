@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+
 
 
 class AuthController extends Controller
@@ -48,4 +50,43 @@ class AuthController extends Controller
         toast('Berhasil logout!', 'success');
         return redirect("/");
     }
+
+    public function register()
+{
+    return view("register");
+}
+
+public function post_register(Request $request)
+{
+    // Validasi input
+    $validator = Validator::make($request->all(), [
+        'name' => 'required',
+        'email' => 'required|email:dns',
+        'password' => 'required|min:8|max:8',
+    ]);
+
+    // Cek apakah validasi gagal
+    if ($validator->fails()) {
+        Alert::error('Gagal!', 'Pastikan semua terisi dengan benar!');
+        return redirect()->back();
+    }
+
+    // Membuat akun baru
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => bcrypt($request->password),
+        'point' => 10000,
+    ]);
+
+    // Cek apakah pembuatan user berhasil
+    if ($user) {
+        Alert::success('Berhasil!', 'Akun baru berhasil dibuat, silahkan melakukan login!');
+        return redirect('/');
+    } else {
+        Alert::error('Gagal!', 'Akun gagal dibuat, silahkan coba lagi!');
+        return redirect()->back();
+    }
+}
+
 }

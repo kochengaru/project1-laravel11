@@ -123,4 +123,10 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'aliases' => [
+        // Alias lainnya...
+        'Session' => Illuminate\Support\Facades\Session::class,
+    ],
+
+
 ];

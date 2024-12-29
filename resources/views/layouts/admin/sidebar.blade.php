@@ -1,10 +1,10 @@
-<div class="main-sidebar sidebar-style-2">
+{{-- <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="#">Teknik Informatika | RPL</a>
+            <a href="#">Teknik Informatika | KSI</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="#">RPL</a>
+            <a href="#">KSI</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Menu</li>
@@ -12,6 +12,36 @@
                 <a class="nav-link" href="{{ route('admin.dashboard') }}">
                     <i class="fa fa-home"></i>
                     <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('product*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.product') }}"><i class="fas fa-box"></i>
+                    <span>Produk</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+</div> --}}
+<div class="main-sidebar sidebar-style-2">
+    <aside id="sidebar-wrapper">
+        <div class="sidebar-brand">
+            <a href="#">Teknik Informatika | KSI</a>
+        </div>
+        <div class="sidebar-brand sidebar-brand-sm">
+            <a href="#">KSI</a>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="menu-header">Menu</li>
+            <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                    <i class="fa fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="{{ request()->is('product*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.product') }}">
+                    <i class="fas fa-box"></i>
+                    <span>Produk</span>
                 </a>
             </li>
         </ul>
